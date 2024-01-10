@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_training/cubits/social_cubit/social_states.dart';
 import 'package:firebase_training/main.dart';
 import 'package:firebase_training/models/user_model.dart';
+import 'package:firebase_training/views/add_post_view.dart';
 import 'package:firebase_training/views/nav_bar_views/chat_view.dart';
 import 'package:firebase_training/views/nav_bar_views/feeds_view.dart';
 import 'package:firebase_training/views/nav_bar_views/settings_view.dart';
@@ -20,9 +21,7 @@ class SocialCubit extends Cubit<SocialStates> {
     emit(SocialSignOutState());
   }
 
-  int cuttentIndex =mybox!.get('index',defaultValue: 0);
   UserModel? userModel;
-  List<Widget> pages = [FeedsView(), ChatView(), UsersView(), SettingsView()];
   void getUserData() {
     emit(SocialGetUserLoadingState());
     FirebaseFirestore.instance
@@ -39,9 +38,22 @@ class SocialCubit extends Cubit<SocialStates> {
     });
   }
 
+  int cuttentIndex = mybox!.get('index', defaultValue: 0);
+  List<String> titles = ['Feeds', 'Chats', 'Users', 'Settings'];
+  List<Widget> pages = [
+    FeedsView(),
+    ChatView(),
+    UsersView(),
+    SettingsView()
+  ];
   void changeNavBar(int value) {
-    mybox!.put('index', value);
+    
+    if (value != 2) {
+      {mybox!.put('index', value);
     cuttentIndex = mybox!.get('index');
-    emit(SocialChangeBottomNavState());
+      emit(SocialChangeBottomNavState());}
+    } else {
+      emit(AddPostState());
+    }
   }
 }

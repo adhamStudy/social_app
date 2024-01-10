@@ -2,6 +2,7 @@ import 'package:firebase_training/components/components.dart';
 
 import 'package:firebase_training/cubits/social_cubit/social_cubit.dart';
 import 'package:firebase_training/cubits/social_cubit/social_states.dart';
+import 'package:firebase_training/views/add_post_view.dart';
 import 'package:firebase_training/views/social_login_view.dart';
 
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class SocialHomeView extends StatelessWidget {
           if (state is SocialSignOutState) {
             navigateAndFinish(context, SocialLoginView());
           }
+          if (state is AddPostState) {
+            navigateTo(context, AddPostView());
+          }
         },
         builder: (context, state) {
           return Scaffold(
@@ -27,7 +31,8 @@ class SocialHomeView extends StatelessWidget {
               // remove backgroung color,
               backgroundColor: Colors.white,
               title: Text(
-                'Social App',
+                SocialCubit.get(context)
+                    .titles[SocialCubit.get(context).cuttentIndex],
                 style: TextStyle(color: Colors.black),
               ),
               actions: [
@@ -52,6 +57,8 @@ class SocialHomeView extends StatelessWidget {
               items: const [
                 BottomNavigationBarItem(icon: Icon(Icons.feed), label: 'Feeds'),
                 BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chats'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.post_add), label: 'add post'),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.person), label: 'Users'),
                 BottomNavigationBarItem(

@@ -30,15 +30,17 @@ class FeedsView extends StatelessWidget {
               )
             ]),
           ),
-          ListView.builder(
-            itemBuilder: (context, index) {
-              return buildPost();
-
-            },
-            itemCount: 10,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-          )
+          ListView.separated(
+            
+              itemBuilder: (context, index) {
+                return buildPost();
+              },
+              itemCount: 10,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              separatorBuilder: (context, index) => const SizedBox(
+                    height: 8.0,
+                  ))
         ],
       ),
     );
@@ -47,7 +49,7 @@ class FeedsView extends StatelessWidget {
   Widget buildPost() => Card(
         margin: const EdgeInsets.all(8.0),
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 1,
+        elevation: 5,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

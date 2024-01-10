@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.white,
             elevation: 0,
             titleTextStyle: TextStyle(
-                color: Colors.black, fontSize: 24, fontFamily: 'Ubuntu'),
+                color: Colors.black, fontSize: 22, fontFamily: 'Ubuntu'),
             iconTheme: IconThemeData(color: Colors.black)),
         primarySwatch: Colors.purple,
         textTheme: const TextTheme(

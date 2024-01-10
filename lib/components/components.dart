@@ -119,9 +119,13 @@ class MyDivider extends StatelessWidget {
 void navigateTo(BuildContext context, Widget screen) {
   Navigator.push(
     context,
-    MaterialPageRoute(
-      builder: (context) {
-        return screen;
+    PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => screen,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
       },
     ),
   );
