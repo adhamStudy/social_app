@@ -33,7 +33,7 @@ class FeedsView extends StatelessWidget {
           ListView.builder(
             itemBuilder: (context, index) {
               return buildPost();
-              
+
             },
             itemCount: 10,
             shrinkWrap: true,
@@ -57,7 +57,7 @@ class FeedsView extends StatelessWidget {
                   const CircleAvatar(
                     radius: 25.0,
                     backgroundImage: NetworkImage(
-                        'https://images.freeimages.com/images/large-previews/3b2/woman-1571719.jpg'),
+                        'https://media.istockphoto.com/id/1455776535/de/foto/stilvolles-fr%C3%B6hliches-fr%C3%B6hliches-m%C3%A4dchen-das-einen-rosa-pullover-mit-einer-roten-herzbrille.jpg?s=2048x2048&w=is&k=20&c=l-OD3YtMKNHummBdOUPrFpLuNDgysXtiTeJBngRuTiU='),
                   ),
                   const SizedBox(
                     width: 15.0,
